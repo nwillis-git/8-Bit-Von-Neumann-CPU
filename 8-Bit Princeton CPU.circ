@@ -163,6 +163,10 @@
       <a name="facing" val="west"/>
       <a name="incoming" val="10"/>
     </comp>
+    <comp lib="1" loc="(1610,1560)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="A_OUT"/>
+    </comp>
     <comp lib="1" loc="(1870,840)" name="Splitter">
       <a name="fanout" val="32"/>
       <a name="incoming" val="32"/>
@@ -192,6 +196,12 @@
     <comp lib="1" loc="(1890,350)" name="Tunnel">
       <a name="label" val="ADDR_LO"/>
     </comp>
+    <comp lib="1" loc="(1890,370)" name="Tunnel">
+      <a name="label" val="RAM R/W"/>
+    </comp>
+    <comp lib="1" loc="(1890,390)" name="Tunnel">
+      <a name="label" val="A_OUT"/>
+    </comp>
     <comp lib="1" loc="(640,1120)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="BOOT"/>
@@ -213,6 +223,10 @@
     <comp lib="1" loc="(840,570)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="PC_OUT"/>
+    </comp>
+    <comp lib="1" loc="(880,440)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="RAM R/W"/>
     </comp>
     <comp lib="1" loc="(890,1750)" name="Tunnel">
       <a name="facing" val="north"/>
@@ -255,6 +269,11 @@
       <a name="bit9" val="0"/>
       <a name="incoming" val="16"/>
     </comp>
+    <comp lib="1" loc="(940,470)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="DB"/>
+      <a name="width" val="8"/>
+    </comp>
     <comp lib="2" loc="(1100,920)" name="Controlled Buffer">
       <a name="facing" val="west"/>
       <a name="width" val="16"/>
@@ -266,6 +285,9 @@
       <a name="width" val="8"/>
     </comp>
     <comp lib="2" loc="(1320,750)" name="Controlled Buffer">
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="2" loc="(1620,1550)" name="Controlled Buffer">
       <a name="width" val="8"/>
     </comp>
     <comp lib="2" loc="(640,1120)" name="NOR Gate">
@@ -301,8 +323,8 @@
     <comp lib="5" loc="(1610,780)" name="ROM">
       <a name="addrWidth" val="10"/>
       <a name="contents">addr/data: 10 32
-22 22 22 253*0 2b 62 255*0 a2
-255*0 1f
+22 22 22 253*0 2b 62 62 254*0
+a6 a6 254*0 1b 311
 </a>
       <a name="dataWidth" val="32"/>
       <a name="label" val="Control ROM"/>
@@ -314,11 +336,12 @@
     <comp lib="5" loc="(950,360)" name="RAM">
       <a name="addrWidth" val="15"/>
       <a name="label" val="RAM"/>
+      <a name="trigger" val="high"/>
     </comp>
     <comp lib="5" loc="(950,530)" name="ROM">
       <a name="contents">addr/data: 8 8
-0 67 1 0 f 2 fa 8*0
-41
+0 ff 2 80 0 0 65 1
+80
 </a>
       <a name="label" val="Boot ROM"/>
     </comp>
@@ -329,6 +352,7 @@
     <comp lib="7" loc="(1530,1590)" name="Power"/>
     <comp lib="7" loc="(1570,1590)" name="Ground"/>
     <comp lib="7" loc="(770,600)" name="Ground"/>
+    <comp lib="7" loc="(940,340)" name="Power"/>
     <wire from="(1120,920)" to="(1270,920)"/>
     <wire from="(1190,1070)" to="(1250,1070)"/>
     <wire from="(1190,420)" to="(1220,420)"/>
@@ -349,7 +373,9 @@
     <wire from="(1260,1080)" to="(1260,1090)"/>
     <wire from="(1270,310)" to="(1270,420)"/>
     <wire from="(1270,420)" to="(1270,590)"/>
-    <wire from="(1270,590)" to="(1270,750)"/>
+    <wire from="(1270,590)" to="(1270,720)"/>
+    <wire from="(1270,720)" to="(1270,750)"/>
+    <wire from="(1270,720)" to="(1370,720)"/>
     <wire from="(1270,750)" to="(1300,750)"/>
     <wire from="(1280,1060)" to="(1310,1060)"/>
     <wire from="(1280,770)" to="(1280,780)"/>
@@ -362,12 +388,14 @@
     <wire from="(1310,900)" to="(1310,1060)"/>
     <wire from="(1320,750)" to="(1340,750)"/>
     <wire from="(1340,1110)" to="(1340,1550)"/>
-    <wire from="(1340,1550)" to="(1340,1750)"/>
+    <wire from="(1340,1550)" to="(1340,1620)"/>
     <wire from="(1340,1550)" to="(1550,1550)"/>
+    <wire from="(1340,1620)" to="(1340,1750)"/>
+    <wire from="(1340,1620)" to="(1650,1620)"/>
     <wire from="(1340,310)" to="(1340,750)"/>
-    <wire from="(1340,750)" to="(1340,800)"/>
-    <wire from="(1340,800)" to="(1340,1110)"/>
-    <wire from="(1340,800)" to="(1410,800)"/>
+    <wire from="(1340,750)" to="(1340,1110)"/>
+    <wire from="(1370,720)" to="(1370,800)"/>
+    <wire from="(1370,800)" to="(1410,800)"/>
     <wire from="(1390,770)" to="(1390,840)"/>
     <wire from="(1390,840)" to="(1420,840)"/>
     <wire from="(1400,810)" to="(1400,930)"/>
@@ -397,6 +425,9 @@
     <wire from="(1560,1570)" to="(1560,1590)"/>
     <wire from="(1570,1570)" to="(1570,1590)"/>
     <wire from="(1570,790)" to="(1610,790)"/>
+    <wire from="(1580,1550)" to="(1600,1550)"/>
+    <wire from="(1620,1550)" to="(1650,1550)"/>
+    <wire from="(1650,1550)" to="(1650,1620)"/>
     <wire from="(1850,840)" to="(1870,840)"/>
     <wire from="(600,950)" to="(600,1060)"/>
     <wire from="(600,950)" to="(710,950)"/>
@@ -424,6 +455,7 @@
     <wire from="(770,580)" to="(770,600)"/>
     <wire from="(780,560)" to="(830,560)"/>
     <wire from="(850,560)" to="(890,560)"/>
+    <wire from="(880,440)" to="(930,440)"/>
     <wire from="(890,260)" to="(890,390)"/>
     <wire from="(890,390)" to="(890,560)"/>
     <wire from="(890,390)" to="(910,390)"/>
@@ -434,6 +466,12 @@
     <wire from="(890,920)" to="(890,1750)"/>
     <wire from="(920,540)" to="(950,540)"/>
     <wire from="(930,370)" to="(950,370)"/>
+    <wire from="(930,390)" to="(930,440)"/>
+    <wire from="(930,390)" to="(950,390)"/>
+    <wire from="(940,340)" to="(940,400)"/>
+    <wire from="(940,400)" to="(950,400)"/>
+    <wire from="(940,420)" to="(940,470)"/>
+    <wire from="(940,420)" to="(950,420)"/>
   </circuit>
   <circuit name="181 ALU">
     <comp lib="1" loc="(1090,1060)" name="Pin">
